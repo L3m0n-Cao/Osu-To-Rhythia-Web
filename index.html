@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Osu to Rhythia Converter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Osu to Rhythia Converter</h1>
+    <p class="subtitle">Convert osu! beatmaps (.osz / .osu) to .SSPM (Sound Space Plus / Rhythia)</p>
+
+    <form id="form" class="form">
+      <div class="row">
+        <label for="input-file">Input (.osz or .osu):</label>
+        <input type="file" id="input-file" accept=".osz,.osu" />
+      </div>
+
+      <div class="row" id="audio-row" style="display: none;">
+        <label for="audio-file">Audio file (for .osu):</label>
+        <input type="file" id="audio-file" accept="audio/*" />
+      </div>
+
+      <div class="row" id="cover-row" style="display: none;">
+        <label for="cover-file">Cover Image (optional):</label>
+        <input type="file" id="cover-file" accept="image/*" />
+      </div>
+
+      <div class="row" id="chart-row">
+        <label for="chart-select">Map in set:</label>
+        <select id="chart-select" disabled></select>
+      </div>
+
+      <div class="row">
+        <label>Output:</label>
+        <span id="output-preview" class="output-preview">Will save as: (choose input first)</span>
+      </div>
+
+      <fieldset class="options">
+        <legend>Options</legend>
+        <div class="row">
+          <label for="difficulty">Difficulty:</label>
+          <select id="difficulty">
+            <option value="na">N/A</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard" selected>Hard</option>
+            <option value="logic">Logic</option>
+            <option value="tasukete">Tasukete</option>
+          </select>
+        </div>
+        <div class="row checkboxes">
+          <label class="checkbox-label">
+            <input type="checkbox" id="include-sliders" checked />
+            Include slider heads as notes
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="include-slider-ends" />
+            Include slider ends as notes
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="include-spinners" />
+            Include spinner starts as notes
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="button" id="btn-convert">Convert</button>
+        <button type="button" id="btn-clear">Clear</button>
+      </div>
+
+      <div class="row">
+        <label for="log">Log</label>
+        <textarea id="log" readonly rows="10"></textarea>
+      </div>
+    </form>
+
+    <footer class="credit">
+      Made with &lt;3 by miyao · inspired by
+      <a href="https://github.com/SlowDogged/Osu-To-Rhythia" target="_blank" rel="noopener noreferrer">Osu-To-Rhythia</a>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
